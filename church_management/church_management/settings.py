@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "data_system",
-    
+    "phonenumber_field",
+    "django_countries",
+
 ]
 
 MIDDLEWARE = [

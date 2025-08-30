@@ -3,7 +3,7 @@ from .models import Departement,Member,StatusHistory, Attendance
 from authenticate.models import User
 
 
-class UserSerializers(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model=User
         fields=("id","username","phone_number","address","email")

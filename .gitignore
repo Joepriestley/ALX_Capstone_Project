@@ -2,3 +2,7 @@ CapstoneProject/
 *.JPG
 *.pjb
 *.prj
+
+# Ignore Python compiled files
+*.pyc
+__pycache__/

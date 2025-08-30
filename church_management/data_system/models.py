@@ -5,7 +5,16 @@ from django_countries.fields import CountryField
 
 
 class Departement(models.Model):
-    name=models.CharField(max_length=50)
+    DEPARTMENT_CHOICES=[
+        ('choir', 'Choir'),
+        ('minister_sherpherd', 'Minister Sherpherd'),
+        ('media', 'Media'),
+        ('organisatio_usher', 'Organisation & Usher'),
+        ('outreach_visitation', 'Outreach & Visitation'),
+        ('kitchen', 'Kitchen'),
+        ('drama_team', 'Drama Team'),
+    ]
+    name=models.CharField(max_length=225,choices=DEPARTMENT_CHOICES, default='choir')
     leader = models.ForeignKey('Member', on_delete=models.SET_NULL, null=True, blank=True, related_name='leading_departments')
     
 class Member(models.Model):
@@ -79,4 +88,4 @@ class Attendance(models.Model):
     status =models.CharField(max_length=20, choices= STATUS_CHOICES, default='present')
     
     def __str__(self):
-        return f"{self.member} - {self.event_type} on {event_date} ({self.status})"
+        return f"{self.member} - {self.event_type} on {self.event_date} ({self.status})"

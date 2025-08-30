@@ -1,4 +1,6 @@
 from rest_framework import serializers
+from phonenumber_field.serializerfields import PhoneNumberField
+from django_countries.serializers import CountryFieldMixin
 from .models import Departement,Member,StatusHistory, Attendance
 from authenticate.models import User
 
@@ -18,7 +20,8 @@ class StatusHistorySerializer(serializers.ModelSerializer):
         model= StatusHistory
         fields ="__all__"
         
-class MemberSerializer(serializers.ModelSerializer):
+class MemberSerializer(CountryFieldMixin,serializers.ModelSerializer):
+    phone = PhoneNumberField()
     class Meta:
         model= Member
         fields ="__all__"

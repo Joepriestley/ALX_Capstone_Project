@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from rest_framework import viewsets
+from rest_framework import viewsets, filters
+from django_filters.rest_framework import DjangoFilterBackend
 from .models import Departement, Attendance,Member,StatusHistory
 from authenticate.models import  User
 from .serializers import UserSerializer,DepartementSerializer,MemberSerializer,StatusHistorySerializer,AttendanceSerializer
@@ -13,6 +14,8 @@ class UserView(viewsets.ModelViewSet):
 class MemberView(viewsets.ModelViewSet):
     queryset = Member.objects.all()
     serializer_class = MemberSerializer
+    filter_backends = [DjangoFilterBackend]
+    filtersets_fields =["departement"]
     
 class DepartementView(viewsets.ModelViewSet):
     queryset = Departement.objects.all()
